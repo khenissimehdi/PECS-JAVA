@@ -83,3 +83,12 @@ public class Collections {
 }
 ```
 Here the Consumer is the dest list that is going to take elements from the Producer that is in this case src List and consume them ( means putting them inside her )
+
+
+## 5. A way of thinking that you should avoid
+There is one way of thinking that personally blocked me a lot while trying to understand the PECS rules is that when use the `<? extends Class>` or the `<? super Class>` and I start thinking
+about the PECS rule I tend to see the Producer and Consumer as the end goal operation of the method means that we use the Producer key work I think that we are producing something and that when we use the 
+keyword Consumer we are going to consume something, but the good way thinking of thinking is that when talk about a Producer we mean that it is some kind of object that will give us some data
+and that when we talk about consumer it is some type of object that will consume some data that we are going to give it.
+
+
