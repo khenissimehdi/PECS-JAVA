@@ -92,3 +92,4 @@ keyword Consumer we are going to consume something, but the good way thinking is
 and that when we talk about Consumer it is some type of object that will consume some data that we are going to give it.
 
 
+
