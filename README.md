@@ -16,12 +16,10 @@ Consumer as a Producer, so bear with me will I try to explain it to myself and t
 
 ## 2. super and extends ?
 ### 2.1 What is `<? super Class>` ?
-`<? super Class>` means that whatever type that you are going to accept have to be or contain ether 
-the  type`Class` itself
+`<? super Class>` means that whatever type that you are going to accept have to be or contain ether the  type`Class` itself
 or bigger
 ### 2.2 What is `<? extends Class>` ?
-`<? extends Class>` means that whatever type tha you are going to accept have to be or contain ether 
-the type `Class` itself
+`<? extends Class>` means that whatever type tha you are going to accept have to be or contain ether the type `Class` itself
 or smaller
 ### 2.3 Drawing that explains what I mean
 ```
@@ -61,23 +59,17 @@ A Consumer is for example a list that we are going to ONLY WRITE INTO
 
 ### 4.1 You CAN'T put a BIGGER BOX into A SMALLER one, and You CAN only put a SMALLER BOX into a bigger one !
 Pretty simple right and logical right but basically this the simple concept that helped me understand this PECS rule
-
+all credits goes this answer on Stackoverflow : [answer link ](https://stackoverflow.com/questions/2723397/what-is-pecs-producer-extends-consumer-super/64888058#64888058)
 So lets say we have a box from now on I will be giving example using that box.
 
 ### 4.2 Producer and boxes
-The Producer will be something that we are going to read from (in our case we can see it as a box of some type) 
-and put it elements inside our box that means that those 
-elements can't be  bigger but at least equal to our box and in Java the only way we have, to know if the box is smaller 
-is by checking if the type of the elements extends form the wanted
-type (the type of the elements we are going to put in our box ),
+The Producer will be something that we are going to read from (in our case we can see it as a box of some type) and put it elements inside our box that means that those 
+elements can't be  bigger but at least equal to our box and in Java the only way we have, to know if the box is smaller is by checking if the type of the elements extends form the wanted type (the type of the elements we are going to put in our box ),
 and that where the `<? extends Class>` comes from 
 
 ### 4.3 Consumer and boxes
-The Consumer will be something that we are going to write into (in our case we can see it as a box of some type)
-and put our elements 
-(elements of our box of some type) inside it, that means the box need to be big enough to accept elements
-means that it have to be bigger or at least equal to our box and in Java the only way we have, to know if 
-the box(we are writing into) is bigger is by checking that the type of the elements is a super type of us, and that where
+The Consumer will be something that we are going to write into (in our case we can see it as a box of some type) and put our elements (elements of our box of some type) inside it, that means the box need to be big enough to accept elements
+means that it have to be bigger or at least equal to our box and in Java the only way we have, to know if the box(we are writing into) is bigger is by checking that the type of the elements is a super type of us, and that where
 the `<? super Class>` comes from 
 
 ### 4.4 Examples
@@ -90,24 +82,18 @@ public class Collections {
   } 
 }
 ```
-Here the Consumer is the dest list that is going to take elements from the Producer that is in this
-case src List and consume them ( means putting them inside her )
+Here the Consumer is the dest list that is going to take elements from the Producer that is in this case src List and consume them ( means putting them inside her )
 **More examples in the directory called EXAMPLES**
 
 ## 5. A way of thinking that you should avoid
-There is one way of thinking that personally blocked me a lot while trying to understand the PECS
-is that when we use the `<? extends Class>` or the `<? super Class>` and I start thinking
-about the rule I tend to see the Producer and Consumer as the end goal operation of the method means
-that when we use the Producer key work I think that we are producing something and that when we use the 
-keyword Consumer we are going to consume something, but the good way thinking is that when we talk about 
-a Producer we mean that it is some kind of object that will give us some data
+There is one way of thinking that personally blocked me a lot while trying to understand the PECS is that when we use the `<? extends Class>` or the `<? super Class>` and I start thinking
+about the rule I tend to see the Producer and Consumer as the end goal operation of the method means that when we use the Producer key work I think that we are producing something and that when we use the 
+keyword Consumer we are going to consume something, but the good way thinking is that when we talk about a Producer we mean that it is some kind of object that will give us some data
 and that when we talk about Consumer it is some type of object that will consume some data that we are going to give it.
 
 ## 6. Outro  Generics == Alchemy
-The thing about generics is that everytime I think I finally understand how it's supposed to work something 
-unexpected happens, exactly like alchemy so keep coding 
-keep using Generics and you  will get a descent understanding of it. hope this paper helped you understand 
-them and feel free to open an issue if you find something wrong 
+The thing about generics is that everytime I think I finally understand how it's supposed to work something unexpected happens, exactly like alchemy so keep coding 
+keep using Generics and you  will get a descent understanding of it. hope this paper helped you understand them and feel free to open an issue if you find something wrong 
 or to ask a question.
 
 
