@@ -22,7 +22,7 @@ or bigger
 `<? extends Class>` means that whatever type tha you are going to accept have to be or contain ether the type `Class` itself
 or smaller
 ### 2.3 Drawing that explains what I mean
-
+```
 +-------------------------------------------------------------------------+                                                                                                                     
 |               +--------------------------------------+                  |                                         
 |               |THE FATHER OF THE FATHER OF YOUR CLASS|                  |                                         
@@ -46,7 +46,7 @@ or smaller
 |                        |  THE KID OF YOUR KID  |                        |                                         
 |                        +-----------------------+                        |                                                                                                                                      
 +-------------------------------------------------------------------------+
-
+```
 ## 3. Producer and Consumer ?
 ### 3.1 What is Producer ?
 A Producer is for example a list that we are going to ONLY READ FROM.
