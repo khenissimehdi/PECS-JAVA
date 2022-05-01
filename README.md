@@ -24,7 +24,7 @@ or bigger
 the type `Class` itself
 or smaller
 ### 2.3 Drawing that explains what I mean
-
+```
 +-------------------------------------------------------------------------+                                                                                                                     
 |               +--------------------------------------+                  |                                         
 |               |THE FATHER OF THE FATHER OF YOUR CLASS|                  |                                         
@@ -48,6 +48,7 @@ or smaller
 |                        |  THE KID OF YOUR KID  |                        |                                         
 |                        +-----------------------+                        |                                                                                                                                      
 +-------------------------------------------------------------------------+
+```
 
 ## 3. Producer and Consumer ?
 ### 3.1 What is Producer ?
