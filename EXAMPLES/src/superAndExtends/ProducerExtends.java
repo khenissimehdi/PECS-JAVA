@@ -11,8 +11,15 @@ public class ProducerExtends {
     public static void main(String[] args) {
 
         class BoxKeeper<T> {
+
+            //private List<? super T> innerBox; works too because its bigger or equal to T
             private List<T> innerBox;
-            public void put(Collection<? extends T> outBox_PRODUCER) {
+
+            /**
+             * take small box (outBox_PRODUCER) read from it and put it elements in bigger box (innerBox)
+             * @param outBox_PRODUCER Collection<? extends T>
+             * */
+            public void readFrom(Collection<? extends T> outBox_PRODUCER) {
                 innerBox = List.copyOf(outBox_PRODUCER);
             }
 
@@ -21,7 +28,6 @@ public class ProducerExtends {
                 return Arrays.toString(innerBox.toArray());
             }
         }
-
 
         class You {
             @Override
@@ -47,40 +53,46 @@ public class ProducerExtends {
         var yourKid = new YourKid();
         var theKidOfYourKid = new TheKidOfYourKid();
 
-        var boxKeeperOfYouElementsType  = new BoxKeeper<You>();
-        var boxKeeperOfYourKidsElementsType = new BoxKeeper<YourKid>();
-        var boxKeeperOfTheKidOfYourKidElementsType = new BoxKeeper<TheKidOfYourKid>();
+        var boxKeeperOfYou  = new BoxKeeper<You>();
+        var boxKeeperOfYourKids = new BoxKeeper<YourKid>();
+        var boxKeeperOfTheKidOfYourKid = new BoxKeeper<TheKidOfYourKid>();
 
-        var packOfYouElements = List.of(you,you,you);
-        var packOfYourKidElements = List.of(yourKid,yourKid,yourKid);
-        var packOfTheKidOfYourKidElements = List.of(theKidOfYourKid,theKidOfYourKid,theKidOfYourKid);
+        var producerYouElements = List.of(you);
+        var producerYourKidElements = List.of(yourKid);
+        var producerTheKidOfYourKidElements = List.of(theKidOfYourKid);
 
 
-        boxKeeperOfYouElementsType.put(packOfYouElements);
-        System.out.println(boxKeeperOfYouElementsType); // -> [I'm you, Im you, I'm you]
-        boxKeeperOfYouElementsType.put(packOfYourKidElements);
-        System.out.println(boxKeeperOfYouElementsType); // -> [I'm your kid, I'm your kid, I'm your kid]
-        boxKeeperOfYouElementsType.put(packOfTheKidOfYourKidElements);
-        System.out.println(boxKeeperOfYouElementsType); // -> [I'm the kid of your kid, I'm the kid of your kid, I'm the kid of your kid]
+        boxKeeperOfYou.readFrom(producerYouElements);
+        System.out.println(boxKeeperOfYou); // -> [I'm you]
 
-        IntStream.range(0,  boxKeeperOfYouElementsType.toString().length()).forEach(e -> System.out.print("-"));
+        boxKeeperOfYourKids.readFrom(producerYourKidElements);
+        System.out.println(boxKeeperOfYourKids); // -> [I'm your kid]
+
+        boxKeeperOfTheKidOfYourKid.readFrom(producerTheKidOfYourKidElements);
+        System.out.println(boxKeeperOfTheKidOfYourKid); // -> [I'm the kid of your kid]
+
+        IntStream.range(0,  boxKeeperOfYou.toString().length()).forEach(e -> System.out.print("-"));
         System.out.println("");
 
-        boxKeeperOfYourKidsElementsType.put(packOfYourKidElements);
-        System.out.println(boxKeeperOfYourKidsElementsType);  // -> [I'm your kid, Im your kid, I'm your kid]
-        boxKeeperOfYourKidsElementsType.put(packOfTheKidOfYourKidElements);
-        System.out.println(boxKeeperOfYourKidsElementsType);  // -> [I'm the kid of your kid, I'm the kid of your kid, I'm the kid of your kid]
+        boxKeeperOfYourKids.readFrom(producerYourKidElements);
+        System.out.println(boxKeeperOfYourKids);  // -> [I'm your kid]
 
-        // boxKeeperOfYourKidsElementsType.put(packOfYouElements); doesn't compile
-        IntStream.range(0,  boxKeeperOfYouElementsType.toString().length()).forEach(e -> System.out.print("-"));
+        boxKeeperOfYourKids.readFrom(producerTheKidOfYourKidElements);
+        System.out.println(boxKeeperOfYourKids);  // -> [I'm the kid of your kid]
+
+        // boxKeeperOfYourKids.put(producerYouElements); doesn't compile
+        IntStream.range(0,  boxKeeperOfYou.toString().length()).forEach(e -> System.out.print("-"));
         System.out.println("");
 
 
-        boxKeeperOfTheKidOfYourKidElementsType.put(packOfTheKidOfYourKidElements);
-        // boxKeeperOfTheKidOfYourKidElementsType.put(packOfYourKidElements);  doesn't compile
-        // boxKeeperOfYourKidsElementsType.put(packOfYouElements); doesn't compile
-        System.out.println(packOfTheKidOfYourKidElements);  // -> [Im the kid of your kid, Im the kid of your kid, Im the kid of your kid]
-        IntStream.range(0,  boxKeeperOfYouElementsType.toString().length()).forEach(e -> System.out.print("-"));
+        boxKeeperOfTheKidOfYourKid.readFrom(producerTheKidOfYourKidElements);
+        System.out.println(boxKeeperOfTheKidOfYourKid);  // -> [I'm the kid of your kid]
+
+        // boxKeeperOfTheKidOfYourKid.put(producerYourKidElements); // doesn't compile
+
+        // boxKeeperOfTheKidOfYourKid.put(producerYouElements); doesn't compile
+
+        IntStream.range(0,  boxKeeperOfYou.toString().length()).forEach(e -> System.out.print("-"));
         System.out.println("");
     }
 }
