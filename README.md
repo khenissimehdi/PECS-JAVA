@@ -21,27 +21,27 @@ or bigger
 ### 2.2 What is `<? extends Class>` ?
 `<? extends Class>` means that whatever type tha you are going to accept have to be or contain ether the type `Class` itself
 or smaller
-### 2.3 Drawing that explains what i mean
+### 2.3 Drawing that explains what I mean
 ```
 +-------------------------------------------------------------------------+                                                                                                                     
 |               +--------------------------------------+                  |                                         
 |               |THE FATHER OF THE FATHER OF YOUR CLASS|                  |                                         
 |               +--------------------------------------+                  |                                         
-|                                                                         |------ ? super YOU        
-|                                                                         |         AREA IS HERE !        
+|                                                                         |--- ? super YOU        
+|                                                                         |    AREA IS HERE !        
 |                      +------------------------+                         |                                         
 |                      |THE FATHER OF YOUR CLASS|                         |                                         
 |                      +------------------------+                         |                                                                                                              
 +-------------------------------------------------------------------------+                                         
 |                            +--------------+                             |                                         
-|                            |     YOU      |                             |------ YOU WILL BE ALWAYS
-|                            +--------------+                             |         IN BOTH AREAS      
+|                            |     YOU      |                             |--- YOU WILL BE ALWAYS
+|                            +--------------+                             |       IN BOTH AREAS      
 |-------------------------------------------------------------------------|                                                                                                                                                       
 |                            +--------------+                             |                                         
 |                            |   YOUR KID   |                             |                                         
 |                            +--------------+                             |                                         
-|                                                                         |------ ? extends  YOU      
-|                                                                         |        AREA IS HERE !                                               
+|                                                                         |--- ? extends  YOU      
+|                                                                         |     AREA IS HERE !                                               
 |                        +-----------------------+                        |                                         
 |                        |  THE KID OF YOUR KID  |                        |                                         
 |                        +-----------------------+                        |                                                                                                                                      
