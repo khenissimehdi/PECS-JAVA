@@ -23,29 +23,29 @@ or bigger
 or smaller
 ### 2.3 Drawing that explains what i mean
 ```
-               +-------------------------------------------------------------------------+                                                                                                                     
-               |               +--------------------------------------+                  |                                         
-               |               |THE FATHER OF THE FATHER OF YOUR CLASS|                  |                                         
-               |               +--------------------------------------+                  |                                         
-               |                                                                         |--------------- ? super   YOU        
-               |                                                                         |                   AREA IS HERE !        
-               |                      +------------------------+                         |                                         
-               |                      |THE FATHER OF YOUR CLASS|                         |                                         
-               |                      +------------------------+                         |                                                                                                              
-               +-------------------------------------------------------------------------+                                         
-               |                            +--------------+                             |                                         
-               |                            |     YOU      |                             |---------------- YOU WILL BE ALWAYS
-               |                            +--------------+                             |                    IN BOTH AREAS      
-               |-------------------------------------------------------------------------|                                                                                                                                                       
-               |                            +--------------+                             |                                         
-               |                            |   YOUR KID   |                             |                                         
-               |                            +--------------+                             |                                         
-               |                                                                         |-------------- ? extends  YOU      
-               |                                                                         |                   AREA IS HERE !                                               
-               |                        +-----------------------+                        |                                         
-               |                        |  THE KID OF YOUR KID  |                        |                                         
-               |                        +-----------------------+                        |                                                                                                                                      
-               +-------------------------------------------------------------------------+  
+           +-------------------------------------------------------------------------+                                                                                                                     
+           |               +--------------------------------------+                  |                                         
+           |               |THE FATHER OF THE FATHER OF YOUR CLASS|                  |                                         
+           |               +--------------------------------------+                  |                                         
+           |                                                                         |------ ? super YOU        
+           |                                                                         |         AREA IS HERE !        
+           |                      +------------------------+                         |                                         
+           |                      |THE FATHER OF YOUR CLASS|                         |                                         
+           |                      +------------------------+                         |                                                                                                              
+           +-------------------------------------------------------------------------+                                         
+           |                            +--------------+                             |                                         
+           |                            |     YOU      |                             |------ YOU WILL BE ALWAYS
+           |                            +--------------+                             |         IN BOTH AREAS      
+           |-------------------------------------------------------------------------|                                                                                                                                                       
+           |                            +--------------+                             |                                         
+           |                            |   YOUR KID   |                             |                                         
+           |                            +--------------+                             |                                         
+           |                                                                         |------ ? extends  YOU      
+           |                                                                         |        AREA IS HERE !                                               
+           |                        +-----------------------+                        |                                         
+           |                        |  THE KID OF YOUR KID  |                        |                                         
+           |                        +-----------------------+                        |                                                                                                                                      
+           +-------------------------------------------------------------------------+  
 ```
 
 
@@ -73,7 +73,8 @@ The Consumer will be something that we are going to write into (in our case we c
 means that it have to be bigger or at least equal to our box and in Java the only way we have, to know if the box(we are writing into) is bigger is by checking that the type of the elements is a super type of us, and that where
 the `<? super Class>` comes from 
 
-### 4.4 Example 
+### 4.4 Examples
+
 ```java
 public class Collections { 
   public static <T> void copy(List<? super T> dest, List<? extends T> src) {
@@ -83,13 +84,18 @@ public class Collections {
 }
 ```
 Here the Consumer is the dest list that is going to take elements from the Producer that is in this case src List and consume them ( means putting them inside her )
-
+**More examples in the directory called EXAMPLES**
 
 ## 5. A way of thinking that you should avoid
 There is one way of thinking that personally blocked me a lot while trying to understand the PECS is that when we use the `<? extends Class>` or the `<? super Class>` and I start thinking
 about the rule I tend to see the Producer and Consumer as the end goal operation of the method means that when we use the Producer key work I think that we are producing something and that when we use the 
 keyword Consumer we are going to consume something, but the good way thinking is that when we talk about a Producer we mean that it is some kind of object that will give us some data
 and that when we talk about Consumer it is some type of object that will consume some data that we are going to give it.
+
+## 6. Outro  Generics == Alchemy
+The thing about generics is that everytime I think I finally understand how it's supposed to work something unexpected happens, exactly like alchemy so keep coding 
+keep using Generics and you  will get a descent understanding of it. hope this paper helped you understand them and feel free to open an issue if you find something wrong 
+or to ask a question.
 
 
 
